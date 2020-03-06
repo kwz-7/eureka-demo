@@ -3,10 +3,26 @@ server:
 eureka:
   client:
     service-url:
-     defaultZone: http://localhost:8010/eureka/
+     defaultZone: http://localhost:8010/eureka/,http://localhost:8009/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 30
   instance:
      prefer-ip-address: true
      instance-id: 127.0.0.1:8012
+
 spring:
   application:
     name: eureka-service.consumer
+EUREKA-SERVICE.PRODUCER: #服务的id
+    ribbon:
+       NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule #算法的实现类
+
+#Hystrix的超时时间
+hystrix:
+   command:
+     default:
+         execution:
+           isolation :
+               thread :
+                 timeoutInMilliseconds: 3000

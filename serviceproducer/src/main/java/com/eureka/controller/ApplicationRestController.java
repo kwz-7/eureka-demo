@@ -14,6 +14,8 @@ public class ApplicationRestController {
     private ProductService productService;
     @GetMapping("/getProducts")
     public String getAllProduct(){
+
+
         return productService.getAllProduct().toString();
     }
 }

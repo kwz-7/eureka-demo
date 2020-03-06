@@ -25,20 +25,11 @@
                <groupId>mysql</groupId>
                <artifactId>mysql-connector-java</artifactId>
            </dependency>
-           <!-- actuator监控信息完善 -->
-           <dependency>
-               <groupId>org.springframework.boot</groupId>
-               <artifactId>spring-boot-starter-actuator</artifactId>
-           </dependency>
+
            <dependency>
                <groupId>org.springframework.cloud</groupId>
                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-               <exclusions>
-                   <exclusion>
-                       <groupId>com.google.code.gson</groupId>
-                       <artifactId>gson</artifactId>
-                   </exclusion>
-               </exclusions>
+
            </dependency>
        </dependencies>
 

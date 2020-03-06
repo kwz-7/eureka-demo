@@ -2,12 +2,16 @@ spring:
   application:
     name: eureka-server
 server:
-  port: 8010
+  port: 8009
 eureka:
   client:
     service-url:
      defaultZone: http://localhost:8010/eureka/
+    register-with-eureka: true
+  server:
+    enable-self-preservation: true
   instance:
       prefer-ip-address: true
-      instance-id: 127.0.0.1:8010
+      instance-id: 127.0.0.1:8009
+
 
