@@ -25,4 +25,20 @@ hystrix:
          execution:
            isolation :
                thread :
-                 timeoutInMilliseconds: 3000
+                 timeoutInMilliseconds: 6000
+#使用Feign之后ribbon的超时时长配置
+ribbon:
+  ReadTimeout: 40
+  ConnectTimeout: 4
+#ribbon:
+ #  ConnectionTimeOut: 50000 #ribbon在500毫秒内没有建立连接就超时
+  # ReadTimeOut: 20000      #ribbon在1s内没有响应就超时
+#使用feign之后开启hystrix功能
+feign:
+   hystrix:
+     enabled: true
+   client:
+       config:
+         default:
+           connect-timeout: 7000
+           read-timeout: 7000

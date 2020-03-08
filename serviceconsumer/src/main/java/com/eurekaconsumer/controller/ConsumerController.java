@@ -3,6 +3,7 @@ package com.eurekaconsumer.controller;
 import com.eurekaconsumer.entity.ProductVo;
 //import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 //import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.eurekaconsumer.fegin.inter.ProductFeginInterface;
 import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
@@ -32,7 +33,19 @@ public class ConsumerController {
     @Autowired
     DiscoveryClient discoveryClient;
 
+    @Autowired
+    ProductFeginInterface productFeginInterface;
 
+    @GetMapping("/getFeign/{id}")
+    public String getAllproduct(@PathVariable Long id){
+
+        return productFeginInterface.getAllProducts(id);
+    }
+    @GetMapping("/getFeign")
+    public String getAllproduct1(){
+
+        return productFeginInterface.getAllProducts(1l);
+    }
 
     //@HystrixCommand(fallbackMethod = "getAllProductFallBack")
     @HystrixCommand(commandProperties = {
@@ -41,13 +54,7 @@ public class ConsumerController {
             @HystrixProperty(name="circuitBreaker.sleepWindowInMilliseconds",value = "10000")
     })
     @GetMapping("/getAllProduct/{id}")
-    //@HystrixCommand
     public String getAllProduct(@PathVariable int id){
-
-         if (id%2==0){
-             throw new RuntimeException();
-         }
-
         //使用Ribbon请求第一种方式:  我们把地址换成服务id即可
         String uri="http://EUREKA-SERVICE.PRODUCER/getProducts";
         String vos = restTemplate.getForObject(uri, String.class);
