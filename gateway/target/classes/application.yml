@@ -11,14 +11,25 @@ eureka:
 spring:
   application:
     name: GATEWAY
+
+
+
+#2:全局路由前缀
 zuul:
   routes:
-     service_consumer:
-         path: /getFeign/**
-         url:  EUREKA-SERVICE-CONSUMER
-         stripPrefix: false
-#1：配置路由前缀
 
+     EUREKA-SERVICE-CONSUMER: /consumer_service/**
+    # prefix: /api      #和下面这个属性一起使用来定义全局前缀不去除，一般不太常用，视情况而定
+     #strip-Prefix: false #
+
+
+#1：配置路由前缀
+#zuul:
+ # routes:
+ #    service_consumer:
+ #        path: /getFeign/**
+ #        url:  EUREKA-SERVICE-CONSUMER
+ #        stripPrefix: false
 
 #3.面向服务的简化配置
 #zuul:
