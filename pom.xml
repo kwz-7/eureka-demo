@@ -12,6 +12,7 @@
         <module>eurekaserver</module>
         <module>serviceproducer</module>
         <module>serviceconsumer</module>
+        <module>gateway</module>
     </modules>
 
     <properties>

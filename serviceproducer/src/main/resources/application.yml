@@ -4,8 +4,8 @@ eureka:
      defaultZone: http://localhost:8010/eureka/,http://localhost:8009/eureka/
     register-with-eureka: true
   instance:
-    prefer-ip-address: true
-    instance-id: 127.0.0.1:8015
+    #prefer-ip-address: true
+   # instance-id: 127.0.0.1:8015
     lease-expiration-duration-in-seconds: 30
 
     lease-renewal-interval-in-seconds: 30
@@ -16,7 +16,7 @@ spring:
       password: root
       driver-class-name: com.mysql.jdbc.Driver
   application:
-      name: eureka-service.producer
+      name: eureka-service-producer
 server:
   port: 8015
 mybatis:

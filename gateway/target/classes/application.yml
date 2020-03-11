@@ -1,0 +1,43 @@
+server:
+  port: 10010
+
+eureka:
+  client:
+    service-url:
+          defaultZone: http://localhost:8010/eureka/,http://localhost:8009/eureka/
+  instance:
+    prefer-ip-address: true
+    instance-id: 127.0.0.1:10010
+spring:
+  application:
+    name: GATEWAY
+zuul:
+  routes:
+     service_consumer:
+         path: /getFeign/**
+         url:  EUREKA-SERVICE-CONSUMER
+         stripPrefix: false
+#1：配置路由前缀
+
+
+#3.面向服务的简化配置
+#zuul:
+#  routes:
+ #    EUREKA-SERVICE-CONSUMER: /consumer_service/**
+  #   EUREKA-SERVICE-PRODUCER: /service_producer/**
+
+
+#2:面向服务的配置。我们把当前模块注册到Eureka注册中心之后就可以直接路由服务了
+#zuul:
+ # routes:
+ #  consumer-server:  #自定义的key
+  #        path: /consumer_service/**
+   #       serviceId: EUREKA-SERVICE.CONSUMER
+
+# 1:url写死的方式
+#zuul:
+#  routes:
+#   consumer-server:  #自定义的key
+#              path: /consumer_service/**         #对象ZuulRoute中path属性,自定义。用于浏览器访问
+#             url:  http://127.0.0.1:8012              #对象ZuulRoute中url属性,路由到的地址，注意前面带http/https
+
