@@ -20,7 +20,7 @@
         <spring-clound.version>Finchley.SR1</spring-clound.version>
         <mapper.starter.version>2.0.3</mapper.starter.version>
         <mysql.version>5.1.32</mysql.version>
-        <springboot.version>2.0.3.RELEASE</springboot.version>
+        <springboot.version>2.5.12</springboot.version>
         <pageHelper.starter.version>1.2.5</pageHelper.starter.version>
     </properties>
     <dependencyManagement>
